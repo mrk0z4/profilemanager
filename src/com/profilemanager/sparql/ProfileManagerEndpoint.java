@@ -1,8 +1,11 @@
 package com.profilemanager.sparql;
 
 import com.hp.hpl.jena.query.*;
+import com.hp.hpl.jena.rdf.model.Resource;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class ProfileManagerEndpoint {
 
@@ -15,11 +18,19 @@ public class ProfileManagerEndpoint {
             " ?x foaf:firstName ?firstName ." +
             " ?x foaf:lastName ?lastName ." +
             " ?x pp:hasPrivacyPreference ?pp }";
+    private final static String QUERY_STRING_BY_EMAIL = "SELECT ?x ?pp WHERE { ?x foaf:mbox \"%s\" ." +
+            " ?x pp:hasPrivacyPreference ?pp }";
 
     // Strings for privacy preferences.
     private final static String LOW_PRIVACY = "PublicPrivacyPreference";
     private final static String MEDIUM_PRIVACY = "SemipublicPrivacyPreference";
     private final static String HIGH_PRIVACY = "CompletePrivacyPreference";
+
+    private final static String PRIVACY_PREFERENCE = "?pp";
+
+    public ProfileManagerEndpoint(){
+
+    }
 
     public void getPrivacyPreferences(){
         // Build the query string.
@@ -58,6 +69,56 @@ public class ProfileManagerEndpoint {
         } finally {
             qexec.close();
         }
+    }
+
+
+    /*
+    * The way we check the preferences are using the foaf:mbox as a search term.
+    * This method appends the string "mailto:" to maintain simplicity.
+     */
+    public Resource getPrivacyPreferences(String mbox){
+        Resource pref = null;
+        String queryString = QUERY_PREFIXES + " " + QUERY_STRING_BY_EMAIL.replace("%s", "mailto:" + mbox);
+        Query query = QueryFactory.create(queryString) ;
+        // Query a remote triple store. In this case, as we work in local, we use localhost in port 3030.
+        QueryExecution qexec = QueryExecutionFactory.sparqlService(SPARQLR_ENDPOINT_QUERY, query) ;
+        try {
+            ResultSet results = qexec.execSelect();
+            QuerySolution sol;
+            if(results.hasNext()) {
+                sol = results.next();
+                // We assume that we only have one result.
+                pref = sol.get(PRIVACY_PREFERENCE).asResource();
+            }
+        } finally {
+            qexec.close();
+        }
+        return pref;
+    }
+
+    public List<Resource> getPrivacyPreferences(List<String> attendeesEmail){
+        List<Resource> preferences = new ArrayList<Resource>();
+        for(String attendeeEmail : attendeesEmail){
+            String queryString = QUERY_PREFIXES + " " + QUERY_STRING_BY_EMAIL.replace("%s", "mailto:" + attendeeEmail);
+            Query query = QueryFactory.create(queryString) ;
+            // Query a remote triple store. In this case, as we work in local, we use localhost in port 3030.
+            QueryExecution qexec = QueryExecutionFactory.sparqlService(SPARQLR_ENDPOINT_QUERY, query) ;
+            try {
+                ResultSet results = qexec.execSelect();
+                QuerySolution sol;
+                if(results.hasNext()) {
+                    sol = results.next();
+                    // We assume that we only have one result.
+                    preferences.add(sol.get(PRIVACY_PREFERENCE).asResource());
+                }
+                else{
+                    preferences.add(null);
+                }
+            } finally {
+                qexec.close();
+            }
+        }
+        return preferences;
     }
 
 }
