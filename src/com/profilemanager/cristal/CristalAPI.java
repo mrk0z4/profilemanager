@@ -8,6 +8,12 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
+ * A class that contains the interface to connect with the cristal service.
+ *
+ * It searches the service via DNS Service Discovery in the LAN and bond to it. Provides the basic functionality for
+ * Interact with the smart glass, connected to the service.
+ *
+ * TODO: make this class generic for using with another types of services.
  * Created by mc on 7/21/14.
  */
 public class CristalAPI {
@@ -17,6 +23,11 @@ public class CristalAPI {
     private JmDNS jmdns;
     private boolean isConnected;
 
+    /**
+     * Constructor.
+     *
+     * It does not connect to the service automatically.
+     */
     public CristalAPI(){
         InetAddress addr = null;
         try {
@@ -30,6 +41,9 @@ public class CristalAPI {
         }
     }
 
+    /**
+     * Search and implements a listener for the discovery of service in LAN.
+     */
     public void connectToService(){
         jmdns.addServiceListener(SERVICE_NAME, new ServiceListener() {
             @Override
@@ -50,6 +64,9 @@ public class CristalAPI {
         });
     }
 
+    /**
+     * Disconnect from the service and stop it.
+     */
     public void disconnectService(){
         try {
             jmdns.close();
@@ -58,6 +75,10 @@ public class CristalAPI {
         }
     }
 
+    /**
+     * Check whether we are connected to the service.
+     * @return true if is connected, false otherwise.
+     */
     public boolean isConnectedToService(){
         return isConnected;
     }

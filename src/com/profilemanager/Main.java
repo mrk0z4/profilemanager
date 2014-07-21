@@ -8,10 +8,7 @@ import com.profilemanager.calendar.CalendarAPI;
 import com.profilemanager.cristal.CristalAPI;
 import com.profilemanager.sparql.ProfileManagerEndpoint;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * Created by mc on 7/15/14.
@@ -33,6 +30,7 @@ public class Main {
         System.out.println(start.toString());
         List<Event> eventList = calendarApi.getEventsWithin(start, end);
         List<String> attendeesEmail = new ArrayList<String>();
+        String priorityAttendeeEmail = "";
         System.out.println("List of all events with start date given:");
         for(Event event : eventList){
             System.out.println(event.getId());
@@ -45,13 +43,19 @@ public class Main {
                     attendeesEmail.add(attendee.getEmail());
                 }
             }
+            System.out.println(event.getStart().getDateTime());
+            System.out.println(event.getEnd().getDateTime());
+            System.out.println("Priority Attendee email: " + event.getExtendedProperties().getPrivate().get("priorityAttendeeEmail"));
+            priorityAttendeeEmail = calendarApi.getPriorityAttendeeEmail(event);
         }
-        List<Resource> preferences = profileManager.getPrivacyPreferences(attendeesEmail);
-        for(Resource preference : preferences) {
-            System.out.println("\nPreference for " + attendeesEmail.get(preferences.indexOf(preference)) + "...");
-            System.out.println(preference != null ? preference.getLocalName() : "null");
-            if(cristalApi.isConnectedToService()){
-                System.out.println("We can now interact with service.");
+        HashMap<String, Resource> preferences = profileManager.getPrivacyPreferences(attendeesEmail);
+        Iterator it = preferences.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println("\nPreference for " + pair.getKey() + "...");
+            System.out.println(((Resource)pair.getValue()).getLocalName());
+            if(cristalApi.isConnectedToService() && pair.getKey().equals(priorityAttendeeEmail)){
+                System.out.println("We can now operate with cristal.");
             }
         }
 
