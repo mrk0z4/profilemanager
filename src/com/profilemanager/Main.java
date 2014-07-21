@@ -5,6 +5,7 @@ import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventAttendee;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.profilemanager.calendar.CalendarAPI;
+import com.profilemanager.cristal.CristalAPI;
 import com.profilemanager.sparql.ProfileManagerEndpoint;
 
 import java.util.ArrayList;
@@ -18,6 +19,12 @@ import java.util.TimeZone;
 public class Main {
 
     public static void main (String args[]){
+
+        CristalAPI cristalApi = new CristalAPI();
+
+        //First we initialize the Service Discovery to search cristal service
+        cristalApi.connectToService();
+
         CalendarAPI calendarApi = new CalendarAPI();
         ProfileManagerEndpoint profileManager = new ProfileManagerEndpoint();
 
@@ -43,6 +50,9 @@ public class Main {
         for(Resource preference : preferences) {
             System.out.println("\nPreference for " + attendeesEmail.get(preferences.indexOf(preference)) + "...");
             System.out.println(preference != null ? preference.getLocalName() : "null");
+            if(cristalApi.isConnectedToService()){
+                System.out.println("We can now interact with service.");
+            }
         }
 
     }
