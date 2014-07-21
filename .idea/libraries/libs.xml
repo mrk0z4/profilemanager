@@ -1,0 +1,60 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-android-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-appengine-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-gson-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-jackson2-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-java6-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-client-servlet-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-api-services-calendar-v3-rev86-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-android-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-appengine-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-gson-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-jackson2-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-http-client-jdo-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-appengine-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-java6-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-jetty-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-oauth-client-servlet-1.18.0-rc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-cache-4.2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet-3.0.0.v201112011016.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jcl-over-slf4j-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jdo2-api-2.3-eb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jena-arq-2.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jena-core-2.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jena-iri-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jena-sdb-1.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jena-tdb-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-6.1.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-util-6.1.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jmdns.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsonld-java-0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-1.3.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-log4j12-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/transaction-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xercesImpl-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xml-apis-1.4.01.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-1.3.9.jar!/" />
+    </SOURCES>
+  </library>
+</component>
